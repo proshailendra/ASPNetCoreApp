@@ -8,8 +8,4 @@
     <None Remove="Jenkinsfile" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Jenkinsfile" />
-  </ItemGroup>
-
 </Project>
