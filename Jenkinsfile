@@ -11,7 +11,7 @@
   }
   stage('Build') {
    steps {
-    bat 'dotnet build ASPNETCoreApp\\ASPNETCoreApp.sln --configuration Release'
+    bat 'dotnet build --configuration Release'
    }
   }
  }
