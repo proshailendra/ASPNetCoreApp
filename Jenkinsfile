@@ -6,7 +6,7 @@
  stages {
   stage('Checkout') {
    steps {
-    git credentialsId: 'proshailendra', url: 'https://github.com/proshailendra/ASPNetCoreApp', branch: 'master'
+    git url: 'https://github.com/proshailendra/ASPNetCoreApp', branch: 'master'
    }
   }
   stage('Build') {
