@@ -14,15 +14,14 @@ pipeline {
     bat 'dotnet publish ASPNETCoreApp.sln --configuration Release'
    }
   }
-   stage('Test: Unit Test'){
+  stage('Test: Unit Test'){
    steps {
      bat "dotnet test ASPNETCoreAppUnitTest\\ASPNETCoreAppUnitTest.csproj"
      }
   }
   stage('Azure Deployment') {
-      steps {  
-          bat 'azureWebAppPublish azureCredentialsId: env.AZURE_CRED_ID,resourceGroup: env.RES_GROUP, appName: env.WEB_APP, sourceDirectory: 
-   "ASPNETCoreApp/bin/Release/netcoreapp3.1/publish/"'
+     steps {
+       bat 'azureWebAppPublish azureCredentialsId: env.AZURE_CRED_ID,resourceGroup: env.RES_GROUP, appName: env.WEB_APP, sourceDirectory: "ASPNETCoreApp/bin/Release/netcoreapp3.1/publish/"'
       }
     }
  }
