@@ -19,10 +19,10 @@ pipeline {
      bat "dotnet test ASPNETCoreAppUnitTest\\ASPNETCoreAppUnitTest.csproj"
      }
   }
-  stage('deploy') {
+  stage('Azure Deployment') {
       steps {  
           bat 'azureWebAppPublish azureCredentialsId: env.AZURE_CRED_ID,resourceGroup: env.RES_GROUP, appName: env.WEB_APP, sourceDirectory: 
-                "ASPNETCoreApp/bin/Release/netcoreapp3.1/publish/"'
+   "ASPNETCoreApp/bin/Release/netcoreapp3.1/publish/"'
       }
     }
  }
