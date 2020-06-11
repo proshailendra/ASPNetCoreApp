@@ -1,8 +1,16 @@
+import groovy.json.JsonSlurper
+
+def updateSettings(connectionStr) {
+    def json = new JsonSlurper()
+    appSettings = json.parse(new File("ASPNETCoreApp/appsettings.json"))
+    appSettings['ConnectionStrings'].DefaultConnection = 'data source=Shailendra\\SQLExpress; initial catalog=MyDB;persist security info=True;user id=sa;password=dotnettricks;'
+}
+
 pipeline {
  agent any
  environment {
   dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
-  ConnectionStrings__DefaultConnection='data source=Shailendra\\SQLExpress; initial catalog=MyDB;persist security info=True;user id=sa;password=dotnettricks;'
+  ConnectionStr='data source=Shailendra\\SQLExpress; initial catalog=MyDB;persist security info=True;user id=sa;password=dotnettricks;'
  }
  stages {
   stage('Checkout') {
@@ -10,6 +18,11 @@ pipeline {
     git url: 'https://github.com/proshailendra/ASPNetCoreApp', branch: 'master'
    }
   }
+  stage('Change Appsettings') {
+      steps {
+        updateSettings('')
+      }
+    }
   stage('Build and Publish') {
    steps {
     bat 'dotnet publish ASPNETCoreApp.sln --configuration Release'
