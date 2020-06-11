@@ -2,7 +2,7 @@ import groovy.json.JsonSlurper
 
 def updateSettings(connectionStr) {
     def json = new JsonSlurper()
-    appSettings = json.parse(new File("ASPNETCoreApp/bin/Release/netcoreapp3.1/publish/appsettings.json"))
+    appSettings = json.parse(new File("./ASPNETCoreApp/bin/Release/netcoreapp3.1/publish/appsettings.json"))
     appSettings['ConnectionStrings'].DefaultConnection = 'data source=Shailendra\\SQLExpress; initial catalog=MyDB;persist security info=True;user id=sa;password=dotnettricks;'
 }
 
