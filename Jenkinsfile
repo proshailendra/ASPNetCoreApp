@@ -2,6 +2,7 @@ pipeline {
  agent any
  environment {
   dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
+  ConnectionStrings__DefaultConnection='data source=Shailendra\\SQLExpress; initial catalog=MyDB;persist security info=True;user id=sa;password=dotnettricks;'
  }
  stages {
   stage('Checkout') {
